@@ -4,7 +4,6 @@ import sys
 
 #added sys.argv for an easy way to import files via the command line
 filename = sys.argv[1]
-print filename
 
 
 
@@ -60,9 +59,17 @@ def make_text(chains):
 
     
     #random choice of key from dictionary
-    key = choice(chains.keys())
-    #text is the tuple key
-    text = key[0] + " " + key[1]
+    text = None
+
+    while not text:
+
+        key = choice(chains.keys())
+        if key[0][0].isupper():
+
+            #text is the tuple key
+            text = key[0] + " " + key[1]
+
+
     
     while True:
        
@@ -73,7 +80,8 @@ def make_text(chains):
         #if key not in dictionary, break out of the loop
         #if not options_for_next_word:
         if options_for_next_word == None:
-            break
+            break    
+
         
         #this is a random element from the list that is the value for the previous key
         random_item_from_list = choice(options_for_next_word)
@@ -85,6 +93,11 @@ def make_text(chains):
         # taking excisting text adding new word choosen from dictionary
         text = text + " " + random_item_from_list
 
+
+        if random_item_from_list[-1] == ".":
+            break
+
+        #print "random_item:", random_item_from_list
     
     return text
 
