@@ -53,13 +53,13 @@ def make_text(chains):
 
     
     #counter initiated at 0 for our while loop
-    counter = 0
+    counter = True
     #random choice of key from dictionary
     key = choice(chains.keys())
     #text is the tuple key
     text = key[0] + " " + key[1]
     
-    while (counter < 50):
+    while counter == True:
        
         #this is the list of values, which we are checking for error
         #this is the key error: if key not in dictionary
@@ -78,7 +78,6 @@ def make_text(chains):
 
         # taking excisting text adding new word choosen from dictionary
         text = text + " " + random_item_from_list
-        counter += 1
 
     
     return text
