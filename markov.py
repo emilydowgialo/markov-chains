@@ -52,20 +52,19 @@ def make_text(chains):
     """Takes dictionary of markov chains; returns random text."""
 
     
-    #counter initiated at 0 for our while loop
-    counter = True
     #random choice of key from dictionary
     key = choice(chains.keys())
     #text is the tuple key
     text = key[0] + " " + key[1]
     
-    while counter == True:
+    while True:
        
         #this is the list of values, which we are checking for error
         #this is the key error: if key not in dictionary
         options_for_next_word = chains.get(key, None)
 
         #if key not in dictionary, break out of the loop
+        #if not options_for_next_word:
         if options_for_next_word == None:
             break
         
@@ -83,7 +82,7 @@ def make_text(chains):
     return text
 
 
-input_path = "green-eggs.txt"
+input_path = "gettysburg.txt"
 
 # Open the file and turn it into one long string
 input_text = open_and_read_file(input_path)
