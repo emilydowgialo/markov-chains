@@ -1,5 +1,12 @@
 from random import choice
 
+import sys
+
+#added sys.argv for an easy way to import files via the command line
+filename = sys.argv[1]
+print filename
+
+
 
 def open_and_read_file(file_path):
     """Takes file path as string; returns text as string.
@@ -82,10 +89,10 @@ def make_text(chains):
     return text
 
 
-input_path = "gettysburg.txt"
+
 
 # Open the file and turn it into one long string
-input_text = open_and_read_file(input_path)
+input_text = open_and_read_file(filename)
 
 # Get a Markov chain
 chains = make_chains(input_text)
