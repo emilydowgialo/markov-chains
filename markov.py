@@ -51,15 +51,34 @@ def make_chains(text_string):
 def make_text(chains):
     """Takes dictionary of markov chains; returns random text."""
 
-    text = ""
     
-    #get a random key from our dictionary
-    
+    #counter initiated at 0 for our while loop
+    counter = 0
+    #random choice of key from dictionary
     key = choice(chains.keys())
-    #put this link into container, which is concatenated into a string
-    text = text + str(key)
+    #text is the tuple key
+    text = key[0] + " " + key[1]
+    
+    while (counter < 50):
+       
+        #this is the list of values, which we are checking for error
+        #this is the key error: if key not in dictionary
+        options_for_next_word = chains.get(key, None)
 
-    print text 
+        #if key not in dictionary, break out of the loop
+        if options_for_next_word == None:
+            break
+        
+        #this is a random element from the list that is the value for the previous key
+        random_item_from_list = choice(options_for_next_word)
+
+        #new key tuple
+        new_key = (key[1], random_item_from_list)
+        key = new_key
+
+        # taking excisting text adding new word choosen from dictionary
+        text = text + " " + random_item_from_list
+        counter += 1
 
     
     return text
